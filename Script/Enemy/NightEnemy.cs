@@ -60,12 +60,14 @@ public class NightEnemy : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if (target == null || target.GetComponent<IDamageable>() == null)
+        FindTarget();
+
+        if (target == null  target.GetComponent<IDamageable>() == null)
         {
             FindTarget();
         }
 
-        if (Enemy.instance.dayNight.time <= 0.25 || Enemy.instance.dayNight.time >= 0.75)
+        if (Enemy.instance.dayNight.time <= 0.25  Enemy.instance.dayNight.time >= 0.75)
         {
             if (target != null)
             {
@@ -90,10 +92,8 @@ public class NightEnemy : MonoBehaviour, IDamageable
             }
 
         }
-        else
+    else
         {
-            Debug.Log("ø©±‚¿”");
-            Debug.Log(Enemy.instance.dayNight.time);
             Die();
         }
 
@@ -232,7 +232,10 @@ public class NightEnemy : MonoBehaviour, IDamageable
             }
         }
 
-        target = closestTarget;
+        if (closestTarget != null)
+        {
+            target = closestTarget;
+        }
     }
 
 
